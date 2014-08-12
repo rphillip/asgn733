@@ -1,0 +1,7 @@
+<!--<span class="inline"><%= form_for todoitem, url:todolist_todoitem_path(id: todoitem.id, todolist_id: @todolist.id) , remote: true do |f| %>
+		<%= f.hidden_field :done, value: true %><%= f.submit "Mark as done"%>
+		<% end %>
+	
+            </span> 
+	<%end%>
+	-->

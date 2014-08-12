@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 8</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag    '//ajax.googleapis.com/ajax/libs/jqueryui/1.11.0/themes/smoothness/jquery-ui.css' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<% if logged_in? %>
+  <div style='float: right;'>
+   <%=link_to "Home", todolists_path %>  |
+    You are logged in as <%= current_user.login %> |
+   <%=link_to "View Account", edit_account_path(current_user.account)%> |
+    <%= link_to "Logout", logout_path, data: {method: :delete} %>      
+  </div>
+<% end %>
+
+
+<%= yield %>
+
+</body>
+</html>

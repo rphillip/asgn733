@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+<h1>
+    <strong>
+  <%if @todolist.todoitems.empty? %>
+	   <span class="done">
+	   <%= @todolist.list_due_date%></span>
+	<%else%>
+	     <% isdone = true %>
+	     <%@todolist.todoitems.each do |todoitem| %>
+	          <%if !todoitem.done %>
+		     <% isdone = false%>
+		     <% break %>
+		  <%end%>
+	    <%end%>
+	    <% if isdone == false %>
+		<span class="notdone">
+		<%else%>
+		<span class="done">
+		<%end%>
+	    <%= @todolist.list_due_date%></span>
+   <%end%>	
+</strong>
+
+
+  <strong>
+  <%= @todolist.list_name %></strong>
+  |<%= link_to 'New Todo Item', new_todolist_todoitem_path(@todolist) %>
+</h1>
+
+
+<!--  use the form_for outside and have it output for each thing...then it might work.
+Or have form_for outside with a submit button for each inside
+Then only render for that specific thingy.-->    
+<div id="todoitem">
+    <%= render @todoitems%>
+    <%= will_paginate @todoitems%>
+    </div>
+
+
+
+
+<%= link_to 'Edit Todo List', edit_todolist_path(@todolist) %> |
+<%= link_to "Delete Todo List", @todolist, 
+        data: { confirm: "List will be deleted?" }, 
+        method: :delete %> |
+<%= link_to 'Back to List of Todo Lists', todolists_path %>
